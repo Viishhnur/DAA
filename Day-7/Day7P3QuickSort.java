@@ -45,7 +45,7 @@ Sample Output-2:
 
 import java.util.Scanner;
 
-class Day7P2QuickSort
+class Day7P3QuickSort
 {
     static void swap(int[] arr,int i,int j){
         int temp = arr[i];

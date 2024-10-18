@@ -1,3 +1,4 @@
+
 /*
 You are given V vertices representing a graph with V nodes. 
 The graph is undirected, and your task is to represent this graph using an adjacency matrix.
@@ -62,6 +63,33 @@ Sample Output-2:
 1 0 0 1 0 
 
  */
+
+import graph.Graph;
+import java.util.*;
+
 public class Day15P1AdjMatrix {
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int vertices = sc.nextInt();
+        int edges = sc.nextInt();
+        sc.nextLine();
+        Graph graph = new Graph(vertices, edges);
+
+        for (int i = 0; i < edges; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            graph.addEdge(u, v);
+        }
+        int[][] adjMatrix = graph.getAdjMatrix();
+
+        Arrays.stream(adjMatrix)
+                .forEach(row -> {
+                    Arrays.stream(row)
+                            .forEach(cell -> System.out.print(cell + " "));
+                    System.out.println();
+                });
+
+        sc.close();
+    }
 }
