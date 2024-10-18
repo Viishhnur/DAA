@@ -9,7 +9,7 @@
 /*.class 
 
 #Ignore outside also
-.class
+*.class
 
 # If you want to ignore all .git folders in all subdirectories (not typically necessary)
 .git/
