@@ -67,6 +67,28 @@ Vertex           Distance from Source
 7                3
 8                6
  */
+import graph.Graph;
+import java.util.*;
 public class Day15P3ShortestPath {
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int[][] graph = new int[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                graph[i][j] = sc.nextInt();
+            }
+        }
+        int src = sc.nextInt();
+        sc.close();
+        
+        Graph g = new Graph(N, N);
+
+        // Now build the custom adjacency list from the graph ArrayList<ArrayList<iPair>> adj and pass it to func
+        List<Integer> result = g.dijkstra(N, g.buildCustomAdjList(graph), src);
+        System.out.println("Vertex           Distance from Source");
+        for (int i = 0; i < N; i++) {
+            System.out.println(i + "                " + result.get(i));
+        }
+    }
 }

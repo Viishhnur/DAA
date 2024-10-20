@@ -64,6 +64,21 @@ import graph.Graph;
 import java.util.*;
 public class Day15P2AdjList {
     public static void main(String[] args) {
-        
+        Scanner sc = new Scanner(System.in);
+
+        int vertices = sc.nextInt();
+        int edges = sc.nextInt();
+        Graph g = new Graph(vertices, edges);
+
+        for (int i = 0; i < edges; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            g.addEdge(u, v);
+        }
+
+        // print the adjList   
+        g.printAdjList();
+
+        sc.close();
     }
 }
