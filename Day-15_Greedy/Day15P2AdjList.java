@@ -82,3 +82,75 @@ public class Day15P2AdjList {
         sc.close();
     }
 }
+
+// Paste this code to pass telescope test cases
+/*
+import java.util.*;
+
+class Graph {
+    int vertices;
+    int edges;
+
+    int[][] adjMatrix;
+
+    public Graph(int vertices, int edges) {
+        this.vertices = vertices;
+        this.edges = edges;
+        adjMatrix = new int[vertices][vertices];
+    }
+
+    // u,v are two nodes that are connected by an edge
+    public void addEdge(int u, int v) {
+        // Since this is a bi-directional graph, we need to add the edge from u to v and
+        // v to u
+        adjMatrix[u][v] = 1;
+        adjMatrix[v][u] = 1;
+    }
+
+    public int[][] getAdjMatrix() {
+        return adjMatrix;
+    }
+
+    public List<Integer> getAdjList(int node) {
+        List<Integer> adjList = new ArrayList<>();
+        for (int v = 0; v < vertices; v++) {
+            if (adjMatrix[node][v] == 1) {
+                adjList.add(v);
+            }
+        }
+        return adjList;
+    }
+
+    public void printAdjList() {
+        for (int u = 0; u < vertices; u++) {
+            System.out.print(u + ": ");
+            List<Integer> adjList = getAdjList(u);
+            adjList.forEach(v -> System.out.print(v + " "));
+            System.out.println();
+        }
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int vertices = sc.nextInt();
+        int edges = sc.nextInt();
+        Graph g = new Graph(vertices, edges);
+
+        for (int i = 0; i < edges; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            g.addEdge(u, v);
+        }
+
+        // print the adjList   
+        g.printAdjList();
+
+        sc.close();
+    }
+}
+
+ */
