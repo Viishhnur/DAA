@@ -64,7 +64,7 @@ Sample Output-2:
 
  */
 
-import graph.Graph;
+import graph.*;
 import java.util.*;
 
 public class Day15P1AdjMatrix {
@@ -74,14 +74,14 @@ public class Day15P1AdjMatrix {
         int vertices = sc.nextInt();
         int edges = sc.nextInt();
         sc.nextLine();
-        Graph graph = new Graph(vertices, edges);
+        Graph g = new GraphImpl(vertices, edges);
 
         for (int i = 0; i < edges; i++) {
             int u = sc.nextInt();
             int v = sc.nextInt();
-            graph.addEdge(u, v);
+            g.addEdge(u, v);
         }
-        int[][] adjMatrix = graph.getAdjMatrix();
+        int[][] adjMatrix = g.getAdjMatrix();
 
         Arrays.stream(adjMatrix)
                 .forEach(row -> {

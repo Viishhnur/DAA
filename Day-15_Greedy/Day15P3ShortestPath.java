@@ -67,28 +67,46 @@ Vertex           Distance from Source
 7                3
 8                6
  */
-import graph.Graph;
+// import graph.GraphImpl;
+// import graph.IPair;
+// import graph.DijkstraAlgorithm;
+import graph.*;
 import java.util.*;
+
 public class Day15P3ShortestPath {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+        int N = sc.nextInt(); // Number of vertices in the graph
+
+        // Step 1: Read the adjacency matrix
         int[][] graph = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 graph[i][j] = sc.nextInt();
             }
         }
-        int src = sc.nextInt();
+        int src = sc.nextInt(); // Source vertex
         sc.close();
-        
-        Graph g = new Graph(N, N);
 
-        // Now build the custom adjacency list from the graph ArrayList<ArrayList<iPair>> adj and pass it to func
-        List<Integer> result = g.dijkstra(N, g.buildCustomAdjList(graph), src);
+        // Step 2: Use your GraphImpl to represent the graph
+        Graph g = new GraphImpl(N, N);
+
+        // Step 3: Build the custom adjacency list using the adjacency matrix
+        ArrayList<ArrayList<IPair>> adj = g.buildCustomAdjList(graph);
+
+        // Step 4: Use Dijkstra's algorithm to compute the shortest paths
+        DijkstraAlgorithm dij = new DijkstraAlgorithm();
+        
+        List<Integer> result = dij.dijkstraUsingSet(N, adj, src);  // using set is little more efficient than using Priority queue
+        // List<Integer> result = dij.dijkstraUsingPQ(N, adj, src); // this is using Priority queue
+
+
+        // Step 5: Print the results
         System.out.println("Vertex           Distance from Source");
         for (int i = 0; i < N; i++) {
             System.out.println(i + "                " + result.get(i));
         }
     }
 }
+
+// Tesselator code 

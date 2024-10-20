@@ -60,7 +60,7 @@ Sample Output-2:
 2: 1
  */
 
-import graph.Graph;
+import graph.*;
 import java.util.*;
 public class Day15P2AdjList {
     public static void main(String[] args) {
@@ -68,7 +68,7 @@ public class Day15P2AdjList {
 
         int vertices = sc.nextInt();
         int edges = sc.nextInt();
-        Graph g = new Graph(vertices, edges);
+        Graph g = new GraphImpl(vertices, edges);
 
         for (int i = 0; i < edges; i++) {
             int u = sc.nextInt();
