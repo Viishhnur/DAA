@@ -84,6 +84,68 @@ Sample Output-4:
 Explanation: The combined sorted marks are: [7, 10, 20, 30, 40, 50, 60, 80].
 The median is 35.0.
  */
+import java.util.*;
+
 public class Day10P2MedianOfSortedArr {
-    
+    private static double getMedianOf(int[] arr1,int[] arr2){
+        int i = 0 , j = 0;
+        int n = arr1.length + arr2.length;
+        int el2 = n / 2;
+        int el1 = n/2 - 1;
+
+        int cnt = 0;
+        
+        int ind1Ele = -1 , ind2Ele = -1;
+        while(i < arr1.length && j < arr2.length){
+            if(arr1[i] < arr2[j]){
+                if(cnt == el1) ind1Ele = arr1[i];
+                if(cnt == el2) ind2Ele = arr1[i];
+                i++;
+                cnt++;
+            } 
+            else{
+                if(cnt == el1) ind1Ele = arr2[j];
+                if(cnt == el2) ind2Ele = arr2[j];
+                j++;
+                cnt++;
+            }
+           
+        }
+
+        while(i < arr1.length){
+            if(cnt == el1) ind1Ele = arr1[i];
+            if(cnt == el2) ind2Ele = arr1[i];
+            i++;
+            cnt++;
+        } 
+
+        while(j < arr2.length){
+            if(cnt == el1) ind1Ele = arr2[j];
+            if(cnt == el2) ind2Ele = arr2[j];
+            j++;
+            cnt++;
+        } 
+
+        if((n & 2) == 1){
+            // if odd return element at second ind
+            return ind2Ele;
+        }
+
+        return (double)(ind1Ele + ind2Ele) / 2;
+
+                                                               
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt() , n = sc.nextInt();
+
+        int[] arr1 = new int[m];
+        int[] arr2 = new int[n];
+
+        for(int i = 0 ; i < m ; i++) arr1[i] = sc.nextInt();
+        for(int i = 0 ; i < n ; i++) arr2[i] = sc.nextInt();
+
+        sc.close();
+        System.out.print(getMedianOf(arr1,arr2));
+    }
 }

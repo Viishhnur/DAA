@@ -44,6 +44,69 @@ Sample Output-2:
 
 Explanation: There is no common element in all rows, so the output is -1.
  */
-public class Day10P1SmallestEleInAllRows {
-    
+
+import java.util.Scanner;
+
+class Day10P1SmallestEleInAllRows {
+
+    private static boolean binarySearch(int[] arr, int low, int high, int target) {
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == target)
+                return true;
+            else if (arr[mid] < target)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return false;
+    }
+
+    public static int smallestCommonElement(int[][] mat) {
+        if (mat.length == 1)
+            return mat[0][0];
+
+        int lastEle = mat[0][mat[0].length - 1]; // Last element of the first row
+
+        // Iterate over each element of the first row
+        for (int ele : mat[0]) {
+            int count = 1;
+            boolean isCommon = true;
+
+            for (int i = 1; i < mat.length; i++) {
+                // If the last element of the first row is less than the first element of any other row, there’s no common element
+                if (lastEle < mat[i][0]) {
+                    isCommon = false;
+                    break;
+                }
+
+                if (binarySearch(mat[i], 0, mat[i].length - 1, ele))
+                    count++;
+                else {
+                    isCommon = false;
+                    break;
+                }
+            }
+
+            if (isCommon && count == mat.length)
+                return ele;
+        }
+        
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        int[][] arr = new int[m][n];
+
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                arr[i][j] = sc.nextInt();
+
+        sc.close();
+        System.out.println(smallestCommonElement(arr));
+    }
 }
+

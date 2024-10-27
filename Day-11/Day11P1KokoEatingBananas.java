@@ -64,6 +64,55 @@ Sample Output-3:
 Explanation:
 Koko can eat all bananas in 6 hours with a speed of k = 23.
  */
+// what is the minimum speed with which koko has to bananas inorder to complete with the limited time of h hrs
+import java.util.*;
 public class Day11P1KokoEatingBananas {
-    
+	private static int requiredHours(int[] piles,int hourly){
+		int totalHrs = 0;
+		for(int pile : piles){
+			totalHrs += (pile + hourly -1 / hourly);
+		}
+
+		return totalHrs;
+	}
+	private static int getMax(int[] piles){
+		int ans = 0;
+		for(int p : piles){
+			ans = Math.max(ans,p);
+		}
+
+		return ans;
+	}
+	private static int minEatingSpeed(int[] piles,int maxTime){
+		int low = 1;
+		int high = getMax(piles);
+
+		while(low < high){
+			int mid = (low + high) / 2;
+			int hoursNeeded = requiredHours(piles,mid);
+
+			if(hoursNeeded <= maxTime){
+				high = mid - 1;
+			}
+			else{
+				// need more speed 
+				low = mid + 1;
+			}
+		}
+
+		return low;
+	}
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int n = sc.nextInt();
+		int maxTime = sc.nextInt();
+
+		int[] piles = new int[n];
+
+		for(int i = 0;i< n;i++) piles[i] = sc.nextInt();
+
+		sc.close();
+		System.out.println(minEatingSpeed(piles, maxTime));
+	}
 }
