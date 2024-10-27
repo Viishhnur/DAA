@@ -1,7 +1,6 @@
 package graph;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GraphImpl implements Graph {
     private int vertices;
@@ -63,5 +62,43 @@ public class GraphImpl implements Graph {
             }
         }
         return adj;
+    }
+
+    @Override
+    public void BFS(int start) {
+        boolean[] visited = new boolean[vertices];
+        Queue<Integer> queue = new LinkedList<>();
+        visited[start] = true;
+        queue.add(start);
+
+        while(!queue.isEmpty()) {
+            int top = queue.poll();
+            System.out.print(top + " ");
+            List<Integer> adjList = getAdjList(top);
+            for (int v : adjList) {
+                if (!visited[v]) {
+                    queue.add(v);
+                    visited[v] = true;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void DFS(int start) {
+        boolean[] visited = new boolean[vertices];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+
+        while (!queue.isEmpty()) {
+            int top = queue.poll();
+            System.out.print(top + " ");
+            List<Integer> adjList = getAdjList(top);
+            for (int v : adjList) {
+                if (!visited[v]) {
+                    queue.add(v);
+                }
+            }
+        }
     }
 }

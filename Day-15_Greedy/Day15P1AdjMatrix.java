@@ -74,7 +74,7 @@ public class Day15P1AdjMatrix {
         int vertices = sc.nextInt();
         int edges = sc.nextInt();
         sc.nextLine();
-        Graph g = new GraphImpl(vertices, edges);
+        GraphImpl g = new GraphImpl(vertices, edges);
 
         for (int i = 0; i < edges; i++) {
             int u = sc.nextInt();

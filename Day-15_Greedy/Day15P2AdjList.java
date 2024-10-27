@@ -68,7 +68,7 @@ public class Day15P2AdjList {
 
         int vertices = sc.nextInt();
         int edges = sc.nextInt();
-        Graph g = new GraphImpl(vertices, edges);
+        GraphImpl g = new GraphImpl(vertices, edges);
 
         for (int i = 0; i < edges; i++) {
             int u = sc.nextInt();

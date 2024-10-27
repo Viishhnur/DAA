@@ -16,4 +16,8 @@ public interface Graph {
     int[][] getAdjMatrix();
 
     ArrayList<ArrayList<IPair>> buildCustomAdjList(int[][] graph);
+
+    void BFS(int start);
+
+    void DFS(int start);
 }

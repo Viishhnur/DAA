@@ -87,7 +87,7 @@ public class Day15P3ShortestPath {
         sc.close();
 
         // Step 2: Use your GraphImpl to represent the graph
-        Graph g = new GraphImpl(N, N);
+        GraphImpl g = new GraphImpl(N, N);
 
         // Step 3: Build the custom adjacency list using the adjacency matrix
         ArrayList<ArrayList<IPair>> adj = g.buildCustomAdjList(graph);
