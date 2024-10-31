@@ -104,7 +104,7 @@ public class Day14P1Knapsack {
         Arrays.sort(arr, (a, b) -> {
             double r1 = (double) a.value / a.weight;
             double r2 = (double) b.value / b.weight;
-            return Double.compare(r2, r1); // Sorts in descending orde
+            return Double.compare(r2, r1); // Sorts in descending order
         });
 
         double maxVal = 0.0;

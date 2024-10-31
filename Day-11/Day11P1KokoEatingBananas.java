@@ -92,6 +92,7 @@ public class Day11P1KokoEatingBananas {
 			int hoursNeeded = requiredHours(piles,mid);
 
 			if(hoursNeeded <= maxTime){
+				// search if you can still get a smaller ans
 				high = mid - 1;
 			}
 			else{
