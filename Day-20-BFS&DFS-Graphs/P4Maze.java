@@ -105,8 +105,12 @@ public class P4Maze {
         }
     }
     private static boolean canReach(int[][] grid,boolean[][] visited,int n){
+        // Early check for dead end
+        if(grid[0][0] == 0 || grid[n-1][n-1] == 0) return false;
+
         // dfs(0,0,grid,visited,n);
         bfs(0, 0, grid, visited, n);
+        
         return visited[n-1][n-1];
     }
     public static void main(String[] args) {

@@ -36,6 +36,9 @@ Sample Output-2:
 [77, 66, 55, 44, 33, 22]
 
  */
-public class Day19P1AllLonelyNodes {
-    
+import java.util.*;
+public class P1AllLonelyNodes {
+    public static void main(String[] args) {
+		
+	}
 }

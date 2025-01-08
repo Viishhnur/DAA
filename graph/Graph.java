@@ -17,7 +17,7 @@ public interface Graph {
 
     ArrayList<ArrayList<IPair>> buildCustomAdjList(int[][] graph);
 
-    void BFS(int start);
+    // void BFS(int start);
 
-    void DFS(int start);
+    // void DFS(int start);
 }

@@ -53,15 +53,59 @@ Sample Output-2:
 2 0 3 1 
 
  */
-import graph.*;
+
+//  THis method works for both 0-based and 1-based indexing
 import java.util.*;
+class Graph{
+    private int vertices;
+    private int edges;
+    private List<List<Integer>> adjList;
+
+    public Graph(int vertices,int edges){
+        this.vertices = vertices;
+        this.edges = edges;
+        adjList = new ArrayList<>();
+        for(int i = 0 ; i <= vertices  ; i++){
+            adjList.add(new ArrayList<>());
+        }
+    }
+
+    public void addEdge(int u,int v){
+        adjList.get(u).add(v);
+        adjList.get(v).add(u);
+    }
+
+    public void BFS(int start){
+        boolean[] visited = new boolean[vertices+1];
+        
+        Queue<Integer> qu = new LinkedList<>();
+        qu.add(start);
+        visited[start] = true;
+
+        while(!qu.isEmpty()){
+            int first = qu.poll();
+            // print it
+            System.out.print(first + " ");
+            for(int nbr : adjList.get(first)){
+                if(!visited[nbr]){
+                    qu.add(nbr);
+                    visited[nbr] = true;
+                }
+            }
+        }
+
+        System.out.println();
+
+        
+    }
+}
 public class Day18P2BFS {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int vertices = sc.nextInt();
         int edges = sc.nextInt();
-        GraphImpl g = new GraphImpl(vertices, edges);
+        Graph g = new Graph(vertices, edges);
 
         for (int i = 0; i < edges; i++) {
             int u = sc.nextInt();
@@ -70,6 +114,7 @@ public class Day18P2BFS {
         }
 
         int start = sc.nextInt();
+
         g.BFS(start);
 
         sc.close();
